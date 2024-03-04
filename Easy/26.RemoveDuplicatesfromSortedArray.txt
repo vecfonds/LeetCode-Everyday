@@ -1,0 +1,11 @@
+//Java
+
+public int removeDuplicates(int[] nums) {
+        int lastIndex = 1;
+        for(int i=1; i<nums.length;++i){
+            if(nums[i]!=nums[i-1]){
+                nums[lastIndex++]=nums[i];
+            }
+        }
+        return lastIndex;
+}
