@@ -1,0 +1,30 @@
+//solution 1: brute force
+
+//C++
+int maxSubArray(vector<int>& nums) {
+        int size = nums.size();
+        int maxSub = INT_MIN;
+        for(int i=0; i<size;++i){
+            for(int j=i, sumCurr=0;j<size;++j){
+                sumCurr+=nums[j];
+                maxSub=max(sumCurr,maxSub);
+            }
+        }
+    return maxSub;
+}
+
+
+//solution 2: nums[position]+nums[position+1] > nums[position+1] ???
+
+//C++
+int maxSubArray(vector<int>& nums) {
+        int size = nums.size();
+        int maxSub = nums[0];
+        int currSum = nums[0];
+        for(int i=1; i<size;++i){
+            currSum = max(currSum+nums[i], nums[i]);
+            maxSub = max(maxSub,currSum);
+        }
+    return maxSub;
+}
+
