@@ -1,0 +1,39 @@
+//Solution 1: HashMap
+
+//Java
+public int singleNumber(int[] nums) {
+        Map<Integer, Integer> check = new HashMap();
+        for(int i=0;i<nums.length;++i){
+            if(check.containsKey(nums[i])){
+                check.remove(nums[i]);
+            }else{
+                check.put(nums[i], i);
+            }
+        }
+
+        return check.keySet().stream().collect(Collectors.toList()).get(0);
+}
+
+//C++
+int singleNumber(vector<int>& nums) {
+        unordered_map<int,int> mp;
+        for(int i:nums)
+            mp[i]++;
+        
+        for(auto element:mp){
+            if(element.second==1)
+                return element.first;
+        }
+        return -1;
+}
+
+//Solution 2: bitwise XOR operator
+
+//C++
+int singleNumber(vector<int>& nums) {
+        int result=0;
+        for(int i:nums)
+            result^=i;
+            
+        return result;
+}
